@@ -1,0 +1,11 @@
+<h1>Users info</h1>
+<%= form_with model: @user, local:true do |f| %>
+  <h4>name</h4>
+  <%= f.text_field :name %>
+  <h4>Image</h4>
+  <!--ここにnoimageの追加-->
+  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+  <h4>introduction</h4>
+  <%= f.text_field :introduction %>
+  <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+<% end %>
