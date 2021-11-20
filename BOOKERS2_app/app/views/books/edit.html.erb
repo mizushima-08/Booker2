@@ -5,7 +5,7 @@
   <p>opinion</p>
   <%= f.text_field :body %>
   <%= f.submit 'Update Book' %>
-  <%= link_to "Show", books_path %>
+  <%= link_to "Show", book_path(@book.id) %>
    |
   <%= link_to "Back", books_path %>
 <% end %>
