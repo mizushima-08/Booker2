@@ -9,8 +9,6 @@ class BooksController < ApplicationController
         @books = Book.all
         render "index"
     end
-    # @book.save
-    # redirect_to book_edit_path
   end
   
   def index
@@ -24,7 +22,8 @@ class BooksController < ApplicationController
   
   def show
     @book = Book.find(params[:id])
-    @books = Book.all
+    @book_new = Book.new
+    
   end
   
   def update
@@ -48,6 +47,13 @@ class BooksController < ApplicationController
   private
   def book_params
     params.require(:book).permit(:title, :body, :user_id)
+  end
+  
+  def  ensure_current_user
+    @book = Book.find(params[:id])
+    if @book.user_id != current_user.id
+      redirect_to books_path
+    end
   end
   
 end

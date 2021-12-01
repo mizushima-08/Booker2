@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!,except: [:top, :about]
+  #(ログインユーザー以外の情報を遷移しようとした時に制限をかける)
+  before_action :ensure_current_user, {only: [:edit,:update]}
   
   before_action :configure_permitted_parameters, if: :devise_controller?
   
