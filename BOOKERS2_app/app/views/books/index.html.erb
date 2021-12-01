@@ -1,5 +1,17 @@
 <p id="notice"></p>
 <div class="container px-5 px-sm-0">
+  
+  <% if @book.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@book.errors.count, "error") %> error prohibited this obj from being saved:</h2>
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
   <div class="row">
     <div class="col-md-3">
       <h1>User info</h1>
@@ -9,7 +21,7 @@
           <tbody>
             <tr>
               <th>name</th>
-              <!--<th>///////////////</th>-->
+              <!--///////////////////-->
             </tr>
             <tr>
               <th>introduction</th>
